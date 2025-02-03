@@ -1,73 +1,124 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductService } from '../producto/product.service';
 import { Producto } from '../producto';
 import { CartService } from '../carta/carta.service';
 import { RouterLink } from '@angular/router';
 import { FiltroComponent } from '../filtro/filtro.component';
+import { ProductComponent } from '../producto/producto.component';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink, FiltroComponent], 
+  imports: [CommonModule, RouterLink,ProductComponent,FiltroComponent], 
   template: `
     <section>
-      <header>
-        <h1>Tienda de Comida a Domicilio</h1>
-      </header>
-
-      <input type="text" placeholder="Buscar comida..." #filter />
-        <button class="primary" type="button" (click)="filterResults(filter.value)">Buscar</button>
-      <app-filtro (toggleDiscount)="toggleDiscount($event)"></app-filtro>
+      <form>
+        <input type="text" placeholder="Filter by city" />
+        <button class="primary" type="button">Search</button>
+        <app-filtro (toggleDiscount)="toggleDiscount($event)"></app-filtro>      
+      </form>
     </section>
-
     <section class="results">
-      <div *ngFor="let product of filteredProductList" class="product-box">
-        <img [src]="product.imageUrl" alt="Imagen de comida" />
-        <p>{{ product.name }}</p>
-        <p>{{ product.description }}</p>
-        <button (click)="addToCart(product)">Añadir al carrito</button>
-      </div>
+      <app-product *ngFor="let producto of producto"
+        [producto]="producto"></app-product>
     </section>
   `,
   styleUrls: ['./titulo.component.css'], 
 })
-export class HeaderComponent implements OnInit {
-  productList: Producto[] = [];
-  filteredProductList: Producto[] = [];
-  showDiscounts: boolean = false;
-  productService: ProductService = inject(ProductService);
-  cartCount: number = 0;
-  cartService: CartService = inject(CartService);
 
-  constructor() {
-    this.productList = this.productService.getAllProducts();
-    this.filteredProductList = this.productList;
-    this.cartCount = this.cartService.getCartCount();
-  }
+export class HeaderComponent{
+  readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
 
-  ngOnInit(): void {}
-
-  filterResults(text: string) {
-    if (!text) {
-      this.filteredProductList = this.productList;
-      return;
+  producto: Producto[] = [
+    // 🍔 Hamburguesas
+    {
+      discount: 0,
+      id: 1001,
+      name: 'Big Viking',
+      description: 'Hamburguesa con doble carne y queso cheddar',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 8.99
+    },
+    {
+      discount: 15,
+      id: 1002,
+      name: 'Thor Smash',
+      description: 'Hamburguesa con salsa barbacoa y cebolla crujiente',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 9.99,
+    },
+    {
+      discount: 20,
+      id: 1003,
+      name: 'Odin Supreme',
+      description: 'Hamburguesa triple con bacon y mayonesa especial',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 11.49,
+    },
+    {
+      discount: 5,
+      id: 1004,
+      name: 'Freya Delight',
+      description: 'Hamburguesa vegetariana con aguacate y queso de cabra',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 8.49,
+    },
+  
+    {
+      discount: 10,
+      id: 2001,
+      name: 'Asgard Fries',
+      description: 'Papas fritas con queso fundido y jalapeños',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 4.99, 
+    },
+    {
+      discount: 0,
+      id: 2002,
+      name: 'Loki Wings',
+      description: 'Alitas de pollo picantes con salsa buffalo',
+      imageUrl: `${this.baseUrl}/loki-wings.jpg`,
+      price: 6.99,  // Precio aproximado
+    },
+    {
+      discount: 12,
+      id: 2003,
+      name: 'Mjolnir Rings',
+      description: 'Aros de cebolla crujientes con salsa de miel y mostaza',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 5.49,
+    },
+  
+    {
+      discount: 5,
+      id: 3001,
+      name: 'Valhalla Cheesecake',
+      description: 'Tarta de queso con caramelo y nueces',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 4.49, 
+    },
+    {
+      discount: 7,
+      id: 3002,
+      name: 'Bifröst Brownie',
+      description: 'Brownie de chocolate con helado de vainilla',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 5.99,
+    },
+    {
+      discount: 10,
+      id: 3003,
+      name: 'Ragnarök Ice Cream',
+      description: 'Helado de frutos del bosque con crumble de galleta',
+      imageUrl: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+      price: 3.99, 
     }
-    this.filteredProductList = this.productList.filter((product) =>
-      product.name.toLowerCase().includes(text.toLowerCase())
-    );
-  }
-
-  toggleDiscount(showDiscounts: boolean) {
-    this.showDiscounts = showDiscounts;
-    if (this.showDiscounts) {
-      this.filteredProductList = this.productList.filter((product) => product.discount > 0);
+  ];
+  
+  toggleDiscount(showOnlyDiscounted: boolean) {
+    if (showOnlyDiscounted) {
+      this.producto = this.producto.filter(producto => producto.discount > 0);
     } else {
-      this.filteredProductList = this.productList; 
+      this.producto = [...this.producto]; 
     }
-  }
-
-  addToCart(product: Producto) {
-    this.cartService.addToCart(product);
-    this.cartCount = this.cartService.getCartCount() + 1; 
   }
 }

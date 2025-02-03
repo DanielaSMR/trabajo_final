@@ -3,13 +3,24 @@ import { CartService } from './carta/carta.service';
 import { HeaderComponent } from "./titulo/titulo.component";
 import { FiltroComponent } from "./filtro/filtro.component";
 import { ProductComponent } from "./producto/producto.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template:`
+  <main>
+    <header>
+      <h1>Burger King</h1>
+    </header>
+    <section class="content">
+        <app-header></app-header>
+    </section>
+  </main>
+  `,
   styleUrls: ['./app.component.css'],
-  imports: [HeaderComponent, FiltroComponent, ProductComponent]
+  imports: [HeaderComponent, FiltroComponent, ProductComponent,CommonModule]
 })
+
 export class AppComponent {
   title(title: any) {
     throw new Error('Method not implemented.');

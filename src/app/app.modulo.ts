@@ -8,6 +8,8 @@ import { CartaComponent } from './carta/carta.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   imports: [
@@ -19,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductComponent,
     CartaComponent,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ]
 })
 export class AppModule { }
