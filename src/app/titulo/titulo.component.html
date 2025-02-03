@@ -1,0 +1,20 @@
+<section>
+    <header>
+      <h1>Tienda de Comida a Domicilio</h1>
+      <input type="text" placeholder="Buscar comida..." #filter />
+      <button class="primary" type="button" (click)="filterResults(filter.value)">Buscar</button>
+      <button class="new" [routerLink]="['/addfood']">Añadir comida</button>
+    </header>
+  </section>
+
+
+  <section class="results">
+    <div *ngFor="let product of filteredProductList" class="product-box">
+      <img [src]="product.imageUrl" alt="Imagen de comida" />
+      <p>{{ product.name }}</p>
+      <p>{{ product.description }}</p>
+      <button (click)="addToCart(product)">Añadir al carrito</button>
+    </div>
+</section>
+  
+  

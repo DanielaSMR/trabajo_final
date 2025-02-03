@@ -1,12 +1,35 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CartService } from './carta/carta.service';
+import { HeaderComponent } from "./titulo/titulo.component";
+import { FiltroComponent } from "./filtro/filtro.component";
+import { ProductComponent } from "./producto/producto.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  imports: [HeaderComponent, FiltroComponent, ProductComponent]
 })
 export class AppComponent {
-  title = 'trabajo_final';
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
+  cartCount: number = 0;
+
+  products = [
+    { name: 'Pizza', description: 'Deliciosa pizza de pepperoni', image: 'pizza.jpg' },
+    { name: 'Hamburguesa', description: 'Hamburguesa con queso y bacon', image: 'hamburguesa.jpg' },
+    { name: 'Ensalada', description: 'Ensalada fresca con aderezo', image: 'ensalada.jpg' },
+  ];
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+    this.cartCount = this.cartService.getCartCount();
+  }
+
+  updateCartCount() {
+    this.cartCount = this.cartService.getCartCount();
+  }
 }
+
