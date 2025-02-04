@@ -5,22 +5,28 @@ import { CartService } from '../carta/carta.service';
 import { RouterLink } from '@angular/router';
 import { FiltroComponent } from '../filtro/filtro.component';
 import { ProductComponent } from '../producto/producto.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, RouterLink,ProductComponent,FiltroComponent], 
+  imports: [CommonModule, RouterLink,ProductComponent,FiltroComponent,SidebarComponent], 
   template: `
-    <section>
-      <form>
-        <input type="text" placeholder="Filter by city" />
-        <button class="primary" type="button">Search</button>
-        <app-filtro (toggleDiscount)="toggleDiscount($event)"></app-filtro>      
-      </form>
-    </section>
-    <section class="results">
-      <app-product *ngFor="let producto of producto"
-        [producto]="producto"></app-product>
-    </section>
+  <div class="layout">
+    <app-sidebar></app-sidebar>
+    <div class="main-content">
+      <section>
+        <form>
+          <input type="text" placeholder="Filter by city" />
+          <button class="primary" type="button">Search</button>
+          <app-filtro (toggleDiscount)="toggleDiscount($event)"></app-filtro>      
+        </form>
+      </section>
+      <section class="results">
+        <app-product *ngFor="let producto of producto"
+          [producto]="producto"></app-product>
+      </section>
+    </div>
+  </div>
   `,
   styleUrls: ['./titulo.component.css'], 
 })

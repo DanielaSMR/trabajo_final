@@ -1,48 +1,63 @@
+.results {
+  display: flex;
+  flex-direction: column; /* Asegura que los productos estén en columna */
+  gap: 20px; /* Espacio entre productos */
+  align-items: center; /* Centra los productos horizontalmente */
+  width: 100%;
+}
+
 .listing {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Alinea imagen y texto */
   background: var(--accent-color);
   border-radius: 30px;
   border: solid 1px rgb(175, 175, 175);
-  padding-bottom: 15px;
+  padding: 15px;
+  gap: 15px; /* Espacio entre imagen y texto */
+  width: 90%; /* Ocupar el 90% del contenedor */
+  max-width: 800px; /* Limita el ancho máximo */
+  margin: 10px auto; /* Añade separación entre productos */
+}
+
+.listing-img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0; /* Evita que la imagen se deforme */
+}
+
+.listing-content {
+  flex: 1; /* Ocupar el espacio restante */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 300px; /* Ajusta según sea necesario */
+  gap: 5px; /* Espaciado entre textos */
 }
 
 .listing-heading {
-  color: var(--primary-color);
-  padding: 10px 20px 0 20px;
-  font-size: 1.2rem; /* Tamaño de texto */
+  margin: 0;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
-.listing-photo {
-  height: 250px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 30px;
-}
-
-.listing-location {
-  padding: 10px 20px 20px 20px;
+.listing-location,
+.listing-price {
+  margin: 0;
   font-size: 1rem;
-  
 }
 
-.listing-location::before {
-  content: url("/assets/location-pin.svg");
-  margin-right: 10px;
-  
-}
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  .listing {
+    flex-direction: column; /* En móviles, los productos se ponen en columna */
+    align-items: center;
+    text-align: center;
+  }
 
-section.listing a {
-  padding-left: 20px;
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
-section.listing a::after {
-  content: "\203A";
-  margin-left: 5px;
-
+  .listing-img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px 30px 0 0;
+  }
 }

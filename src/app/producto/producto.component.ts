@@ -5,20 +5,23 @@ import { Producto } from '../producto';
 
 @Component({
   selector: 'app-product',
-  template:`
+  template: `
   <section class="listing">
-      <img
-        class="listing-img"
-        [src]="producto.imageUrl"
-        alt="Exterior photo of {{ producto.name }}"
-        crossorigin
-      />
+    <img
+      class="listing-img"
+      [src]="producto.imageUrl"
+      alt="Exterior photo of {{ producto.name }}"
+      crossorigin
+    />
+    <div class="listing-content">
       <h2 class="listing-heading">{{ producto.name }}</h2>
       <p class="listing-location">{{ producto.description }}</p>
-      <p class="listing-location">{{ producto.price }}</p>
-    </section>
-  `,
-  styleUrls: ['./producto.component.css']
+      <p class="listing-price">Precio: {{ producto.price }} €</p>
+    </div>
+  </section>
+`,
+styleUrls: ['./producto.component.css']
+
 })
 export class ProductComponent {
   @Input() producto!: Producto; 
