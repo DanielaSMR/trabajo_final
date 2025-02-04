@@ -4,12 +4,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './titulo/titulo.component';
 import { FiltroComponent } from './filtro/filtro.component';
 import { ProductComponent } from './producto/producto.component';
-import { CartaComponent } from './carta/carta.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { CarritoService } from './carrito.service';
+import { CarritoComponent } from './carrito/carrito.component';
+import { routes } from './app.routes';
 
 @NgModule({
   imports: [
@@ -19,10 +20,12 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     FiltroComponent,
     ProductComponent,
-    CartaComponent,
-    RouterModule,
+    CarritoService,
+    RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    CarritoComponent
   ]
+
 })
 export class AppModule { }

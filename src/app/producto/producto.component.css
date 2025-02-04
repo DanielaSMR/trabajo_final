@@ -1,23 +1,23 @@
 .results {
   display: flex;
-  flex-direction: column; /* Asegura que los productos estén en columna */
-  gap: 20px; /* Espacio entre productos */
-  align-items: center; /* Centra los productos horizontalmente */
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
   width: 100%;
 }
 
 .listing {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Alinea imagen y texto */
+  align-items: center;
   background: var(--accent-color);
   border-radius: 30px;
-  border: solid 1px rgb(175, 175, 175);
+  border: solid 1px rgb(219, 219, 219);
   padding: 15px;
-  gap: 15px; /* Espacio entre imagen y texto */
-  width: 90%; /* Ocupar el 90% del contenedor */
-  max-width: 800px; /* Limita el ancho máximo */
-  margin: 10px auto; /* Añade separación entre productos */
+  gap: 15px;
+  width: 90%; 
+  max-width: 800px; 
+  margin: 10px auto;
 }
 
 .listing-img {
@@ -25,14 +25,14 @@
   width: 150px;
   object-fit: cover;
   border-radius: 20px;
-  flex-shrink: 0; /* Evita que la imagen se deforme */
+  flex-shrink: 0;
 }
 
 .listing-content {
-  flex: 1; /* Ocupar el espacio restante */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px; /* Espaciado entre textos */
+  gap: 5px;
 }
 
 .listing-heading {
@@ -47,10 +47,9 @@
   font-size: 1rem;
 }
 
-/* Para pantallas pequeñas */
 @media (max-width: 768px) {
   .listing {
-    flex-direction: column; /* En móviles, los productos se ponen en columna */
+    flex-direction: column;
     align-items: center;
     text-align: center;
   }

@@ -1,7 +1,8 @@
-import { CartService } from '../carta/carta.service'; 
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { Producto } from '../producto';
+import { CarritoService } from '../carrito.service';
+import { ProductoCarrito } from '../productoCarrito';
 
 @Component({
   selector: 'app-product',
@@ -17,6 +18,7 @@ import { Producto } from '../producto';
       <h2 class="listing-heading">{{ producto.name }}</h2>
       <p class="listing-location">{{ producto.description }}</p>
       <p class="listing-price">Precio: {{ producto.price }} €</p>
+      <button (click)="addToCart()">+</button>
     </div>
   </section>
 `,
@@ -24,12 +26,20 @@ styleUrls: ['./producto.component.css']
 
 })
 export class ProductComponent {
-  @Input() producto!: Producto; 
+  @Input() producto!: Producto;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CarritoService) {}
 
   addToCart() {
-    this.cartService.addToCart(this.producto); 
+    const productoCarrito: ProductoCarrito = {
+      id: this.producto.id,
+      name: this.producto.name,
+      price: this.producto.price,
+      cantidad: 1,
+      image: this.producto.imageUrl
+    };
+
+    this.cartService.addToCart(productoCarrito);  // Agregar el producto al carrito
   }
 }
 
