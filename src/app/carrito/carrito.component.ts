@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  templateUrl: './carrito.component.html',
+  styleUrls: ['./carrito.component.css']
 })
 export class CarritoComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
