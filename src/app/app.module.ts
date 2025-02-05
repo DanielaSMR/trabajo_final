@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CarritoService } from './carrito.service';
 import { CarritoComponent } from './carrito/carrito.component';
-import { routes } from './app.routes';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -21,10 +21,11 @@ import { routes } from './app.routes';
     FiltroComponent,
     ProductComponent,
     CarritoService,
-    RouterModule.forRoot(routes),
+    RouterModule,
     ReactiveFormsModule,
     CommonModule,
-    CarritoComponent
+    CarritoComponent,
+    HomeComponent
   ]
 
 })

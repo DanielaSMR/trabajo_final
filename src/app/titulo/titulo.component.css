@@ -1,87 +1,48 @@
-.results {
-  display: flex;
-  flex-direction: column; 
-  gap: 30px;
-}
 
-.category-title {
-  font-size: 24px;
+
+.header {
+  height: 250px;
+  overflow: hidden; 
+  }
+  
+  .header-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  filter: brightness(50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  }
+  
+  .info-box {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255); 
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+  }
+  
+  .store-name {
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 10px;
-}
-
-.category-group {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  justify-content: center;
-}
-
-
-input[type="text"] {
-  border: solid 1px rgb(175, 175, 175);
-  background-color: rgb(235, 235, 235);
-  padding: 10px;
-  border-radius: 30px;
-  margin-right: 4px;
-  width: 60%;
-}
-
-button {
-  padding: 10px;
-  border: solid 1px var(--primary-color);
-  color: black;
-  border-radius: 8px;
-}
-
-button:hover {
-
-  background-color: rgb(167, 221, 203);
-}
-
-app-filtro {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-@media (min-width: 500px) and (max-width: 768px) {
-  .results {
-    grid-template-columns: repeat(2, 1fr);
+  color: #333;
   }
-  input[type="text"] {
-    width: 70%;
-  }   
-}
-
-@media (max-width: 499px) {
-  .results {
-    grid-template-columns: 1fr;
-  }    
-}
-
-.layout {
-  display: flex;
-  gap: 20px;
-  margin-top: 15px;
-
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.sidebar-content {
-  position: sticky;
-  top: 10px;
-}
-
-.main-content {
-  flex: 1;
-  margin-top: 15px;
-}
+  
+  .store-info {
+  font-size: 1rem;
+  color: #555;
+  }
+  
+  
+  .cart-icon{
+  color: aliceblue;
+  }

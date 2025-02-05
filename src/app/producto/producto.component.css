@@ -60,3 +60,133 @@
     border-radius: 30px 30px 0 0;
   }
 }
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+
+
+.listing {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--accent-color);
+  border-radius: 30px;
+  border: solid 1px rgb(219, 219, 219);
+  padding: 15px;
+  gap: 15px;
+  width: 100%;
+  max-width: 95%;
+  min-height: 200px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 95%;
+  min-height: 200px;
+  box-sizing: border-box;
+}
+
+.listing-img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+.listing-content {
+  flex-grow: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+  overflow: hidden;
+  position: relative; 
+  min-height: 130px;
+  padding-bottom: -5px;
+  justify-content: flex-start;
+  min-width: 0;
+  overflow: hidden;
+  position: relative; 
+  min-height: 130px;
+  padding-bottom: -5px;
+}
+
+.listing-heading {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: visible; 
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: visible; 
+}
+
+
+
+.listing-location,
+.listing-price {
+  margin: 0;
+  font-size: 1rem;
+  white-space: normal;
+  word-wrap: break-word;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .category-group {
+    grid-template-columns: 1fr;
+  }
+
+  .category-group {
+    grid-template-columns: 1fr;
+  }
+
+  .listing {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .listing-img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px 30px 0 0;
+  }
+}
+
+button{
+  position: absolute;
+  bottom: 5%; 
+  right: 10px;
+  width: 20%;
+  font-size:larger;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  border-radius: 20px;
+  border-color: #5ddbb1;
+  background-color: #5ddbb1;
+  z-index: 1;
+}
+
+button{
+  position: absolute;
+  bottom: 5%; 
+  right: 10px;
+  width: 20%;
+  font-size:larger;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  border-radius: 20px;
+  border-color: #5ddbb1;
+  background-color: #5ddbb1;
+  z-index: 1;
+}
