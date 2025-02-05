@@ -1,0 +1,43 @@
+<app-header></app-header>
+  <div class="layout">
+    <app-sidebar></app-sidebar>
+    <div class="main-content">
+      <section>
+        <form>
+          <input type="text" placeholder="🔎Que buscas?" #filter />
+          <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+          <app-filtro (toggleDiscount)="toggleDiscount($event)"></app-filtro>
+          <br>   
+        </form>
+      </section>
+      <section class="results">
+        <div>
+          <div class="category-title" name="menu">🍲Menus</div>
+          <div class="category-group">
+            <app-product *ngFor="let producto of menus" [producto]="producto"></app-product>
+          </div>
+        </div>
+
+        <div>
+          <div class="category-title" name="hamburguesa">🍔Hamburguesas</div>
+          <div class="category-group">
+            <app-product *ngFor="let producto of hamburguesas" [producto]="producto"></app-product>
+          </div>
+        </div>
+
+        <div>
+          <div class="category-title" name="entrante">🍟Entrantes</div>
+          <div class="category-group">
+            <app-product *ngFor="let producto of entrantes" [producto]="producto"></app-product>
+          </div>
+        </div>
+
+        <div>
+          <div class="category-title" name="postre">🍨Postres</div>
+          <div class="category-group">
+            <app-product *ngFor="let producto of postres" [producto]="producto"></app-product>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
