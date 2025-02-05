@@ -1,65 +1,77 @@
-.cart-container {
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .cart-item {
-    display: flex;
-    gap: 15px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .cart-item-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
-  
-  .cart-item-details {
-    flex: 1;
-  }
-  
-  .quantity-control {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  button {
-    padding: 5px 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  .cart-total {
-    font-size: 18px;
-    margin-top: 20px;
-  }
-  
-  .order-button {
-    display: block;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .order-button:hover {
-    background-color: #0056b3;
-  }
-  
+/* cart.component.css */
+.cart-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;  
+}
+
+.cart-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;  
+  max-width: 600px; 
+  max-height: 80%; 
+  overflow-y: auto; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  margin-bottom: 20px;  
+}
+
+.cart-item-img {
+  width: 50px;  
+  height: 50px;
+  margin-bottom: 10px;  
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: column;  
+  align-items: flex-start;  
+}
+
+.cart-item-details h3, .cart-item-details p {
+  margin: 0 0 10px 0;  
+}
+
+.quantity-control {
+  display: flex;  
+  justify-content: center;  
+  margin-top: 10px;  
+}
+
+.quantity-control button {
+  padding: 5px 10px;
+  margin: 0 5px;  
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #5ddbb1;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #4dbf96;
+}

@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { ProductoCarrito } from './productoCarrito';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarritoService {
   private carrito: ProductoCarrito[] = [];
@@ -39,8 +39,14 @@ export class CarritoService {
     return this.carrito.reduce((total, item) => total + item.price * item.cantidad, 0);
   }
 
+  vaciarCarrito() {
+    this.carrito = []; 
+    const total = 0;
+    this.totalQuantitySubject.next(total); 
+  }
+
   private actualizarCantidadTotal() {
     const total = this.carrito.reduce((sum, item) => sum + item.cantidad, 0);
-    this.totalQuantitySubject.next(total);
+    this.totalQuantitySubject.next(total);  // Actualiza la cantidad total observable
   }
 }
