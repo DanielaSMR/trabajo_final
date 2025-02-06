@@ -70,14 +70,20 @@ export class HeaderComponent{
     this.carritoService.totalQuantity$.subscribe((cantidad: number) => {
       this.totalQuantity = cantidad;
     });
-
-    this.productosCarrito = this.carritoService.getCart();  
-    this.calculateTotal();  
+  
+    this.productosCarrito = this.carritoService.getCart();
+    this.calculateTotal();
   }
+  
 
   toggleCarrito(): void {
     this.carritoAbierto = !this.carritoAbierto;
+  
+    if (this.carritoAbierto) {
+      this.calculateTotal(); 
+    }
   }
+  
 
   updateQuantity(item: ProductoCarrito, change: number) {
     this.carritoService.updateQuantity(item, change);
@@ -88,8 +94,10 @@ export class HeaderComponent{
   vaciarCarrito(): void {
     this.carritoService.vaciarCarrito(); 
     this.productosCarrito = this.carritoService.getCart(); 
+    this.calculateTotal(); 
     this.carritoAbierto = false;  
   }
+  
 
   calculateTotal() {
     this.totalPrice = this.carritoService.getTotalPrice();

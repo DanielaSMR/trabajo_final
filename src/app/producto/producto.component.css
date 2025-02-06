@@ -26,6 +26,9 @@
   
 }
 
+.listing:hover{
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+}
 
 .listing-img {
   height: 150px;
@@ -34,7 +37,6 @@
   border-radius: 20px;
   flex-shrink: 0;
 }
-
 
 
 .listing-content {
@@ -68,6 +70,11 @@
   word-wrap: break-word;
 }
 
+.listing-price{
+  font-size: large;
+}
+
+
 @media (max-width: 768px) {
   .category-group {
     grid-template-columns: 1fr;
@@ -99,4 +106,13 @@ button{
   border-color: #5ddbb1;
   background-color: #5ddbb1;
   z-index: 1;
+}
+
+button:hover{
+  background-color: #399677;
+}
+
+.container {
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente en el centro */
 }

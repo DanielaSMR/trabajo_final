@@ -7,6 +7,7 @@ import { ProductoService } from '../producto.service';
 
 @Component({
   selector: 'app-product',
+  imports:[CommonModule],
   template: `
   <section class="listing">
     <img
@@ -18,20 +19,12 @@ import { ProductoService } from '../producto.service';
     <div class="listing-content">
       <h2 class="listing-heading">{{ producto.name }}</h2>
       <p class="listing-location">{{ producto.description }}</p>
-      <div class="price">
-        <p *ngIf="obtenerPrecioConDescuento(producto) < producto.price" class="old-price">
-          {{ producto.price }}
-        </p>
-        <p class="new-price">
-          {{ obtenerPrecioConDescuento(producto) }}
+      <div class="container">
+        <p>Precio:</p>
+        <p [ngStyle]="{ 'color': producto.discount > 0 ? 'red' : 'black' }" class="listing-price">
+          {{ producto.price }} $
         </p>
       </div>
-
-      <div *ngIf="obtenerPrecioConDescuento(producto) < producto.price" class="discount-box">
-        {{ obtenerDescuentoPorcentaje(producto) }}% de descuento
-      </div>
-
-      <p class="listing-price">Precio: {{ producto.price }} €</p>
       <button (click)="addToCart()">+</button>
     </div>
   </section>
@@ -59,13 +52,5 @@ export class ProductComponent {
     this.cartService.addToCart(productoCarrito); 
   }
 
-  obtenerPrecioConDescuento(producto: Producto): number {
-    return this.productoService.calcularPrecioConDescuento(producto);
-  }
-
-  // Método para obtener el porcentaje de descuento
-  obtenerDescuentoPorcentaje(producto: Producto): number {
-    return this.productoService.obtenerDescuentoPorcentaje(producto);
-  }
 }
 

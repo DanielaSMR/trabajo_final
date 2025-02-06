@@ -159,11 +159,4 @@ export class ProductoService {
     return this.listaProducto;
   }
 
-  calcularPrecioConDescuento(producto: Producto): number {
-    return producto.price - (producto.price * (producto.discount / 100));
-  }
-
-  obtenerDescuentoPorcentaje(producto: Producto): number {
-    return producto.discount;  // Retorna el porcentaje de descuento
-  }
 }

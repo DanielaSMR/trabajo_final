@@ -4,25 +4,28 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './titulo/titulo.component';
 import { FiltroComponent } from './filtro/filtro.component';
 import { ProductComponent } from './producto/producto.component';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
+  declarations: [
     AppComponent,
     HeaderComponent,
     FiltroComponent,
     ProductComponent,
-    RouterModule,
-    ReactiveFormsModule,
-    CommonModule,
     HomeComponent
-  ]
-
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    CommonModule,
+    AppRoutingModule
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

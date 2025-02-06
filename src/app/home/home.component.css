@@ -9,16 +9,18 @@
     font-weight: bold;
     margin-bottom: 10px;
   }
-  
+
   .category-group {
     display: grid;
-    gap: 20px; /* Espacio entre los productos */
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Los productos tienen un tamaño mínimo de 400px */
-    justify-content: center; /* Centra los productos */
-    width: 95%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    justify-content: center;
+    width: 95%; 
   }
-  
-  
+
+  .category-group .product-card:hover {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+  }
   
   input[type="text"] {
     border: solid 1px rgb(175, 175, 175);
@@ -37,7 +39,6 @@
   }
   
   button:hover {
-  
     background-color: rgb(167, 221, 203);
   }
   
@@ -63,7 +64,7 @@
       grid-template-columns: 1fr;
     }    
   }
-  
+
   .layout {
     display: flex;
     gap: 20px;

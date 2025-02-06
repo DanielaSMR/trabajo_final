@@ -44,8 +44,8 @@ export class CarritoService {
 
   vaciarCarrito() {
     this.carrito = []; 
-    const total = 0;
-    this.totalQuantitySubject.next(total); 
+    this.actualizarCantidadTotal();
+    this.totalQuantitySubject.next(0);
   }
 
   private actualizarCantidadTotal() {
