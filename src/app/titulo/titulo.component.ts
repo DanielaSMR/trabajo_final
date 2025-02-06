@@ -38,7 +38,6 @@ import { ProductoCarrito } from '../productoCarrito';
             <p>Precio: {{ item.price }}</p>
             <p>Cantidad: {{ item.cantidad }}</p>
 
-            <!-- Botones para cambiar cantidad -->
             <div class="quantity-control">
               <button (click)="updateQuantity(item, -1)">-</button>
               <span>{{ item.cantidad }}</span>
@@ -47,12 +46,10 @@ import { ProductoCarrito } from '../productoCarrito';
           </div>
         </div>
 
-        <!-- Total -->
         <div class="cart-total">
           <h3>Total: {{ totalPrice }}</h3>
         </div>
 
-        <!-- Botones para vaciar y cerrar -->
         <button (click)="vaciarCarrito()">Vaciar Carrito</button>
         <button (click)="toggleCarrito()">Cerrar</button>
       </div>
@@ -63,41 +60,37 @@ import { ProductoCarrito } from '../productoCarrito';
 
 export class HeaderComponent{
   totalQuantity: number = 0;
-  carritoAbierto: boolean = false;  // Controlar la visibilidad del modal
+  carritoAbierto: boolean = false; 
   productosCarrito: ProductoCarrito[] = [];
   totalPrice: number = 0;
 
   constructor(private carritoService: CarritoService) {}
 
   ngOnInit(): void {
-    // Suscribirse al observable para actualizar la cantidad total
     this.carritoService.totalQuantity$.subscribe((cantidad: number) => {
       this.totalQuantity = cantidad;
     });
 
-    this.productosCarrito = this.carritoService.getCart();  // Obtener los productos del carrito
-    this.calculateTotal();  // Calcular el total al inicializar
+    this.productosCarrito = this.carritoService.getCart();  
+    this.calculateTotal();  
   }
 
-  // Mostrar/ocultar el modal
   toggleCarrito(): void {
     this.carritoAbierto = !this.carritoAbierto;
   }
 
-  // Actualizar la cantidad de un producto en el carrito
   updateQuantity(item: ProductoCarrito, change: number) {
     this.carritoService.updateQuantity(item, change);
-    this.productosCarrito = this.carritoService.getCart();  // Actualizar productos del carrito
-    this.calculateTotal();  // Recalcular el total
+    this.productosCarrito = this.carritoService.getCart(); 
+    this.calculateTotal(); 
   }
 
   vaciarCarrito(): void {
-    this.carritoService.vaciarCarrito();  // Llamada al servicio para vaciar el carrito
-    this.productosCarrito = this.carritoService.getCart();  // Actualiza la lista de productos en el carrito
-    this.carritoAbierto = false;  // Cierra el modal después de vaciar el carrito
+    this.carritoService.vaciarCarrito(); 
+    this.productosCarrito = this.carritoService.getCart(); 
+    this.carritoAbierto = false;  
   }
 
-  // Calcular el total de la compra
   calculateTotal() {
     this.totalPrice = this.carritoService.getTotalPrice();
   }

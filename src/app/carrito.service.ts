@@ -50,6 +50,6 @@ export class CarritoService {
 
   private actualizarCantidadTotal() {
     const total = this.carrito.reduce((sum, item) => sum + item.cantidad, 0);
-    this.totalQuantitySubject.next(total);  // Actualiza la cantidad total observable
+    this.totalQuantitySubject.next(total); 
   }
 }
