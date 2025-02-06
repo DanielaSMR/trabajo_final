@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CarritoComponent } from './carrito/carrito.component';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { HomeComponent } from './home/home.component';
     RouterModule,
     ReactiveFormsModule,
     CommonModule,
-    CarritoComponent,
     HomeComponent
   ]
 

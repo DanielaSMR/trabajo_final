@@ -52,4 +52,6 @@ export class CarritoService {
     const total = this.carrito.reduce((sum, item) => sum + item.cantidad, 0);
     this.totalQuantitySubject.next(total); 
   }
+
+  
 }

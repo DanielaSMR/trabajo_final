@@ -12,10 +12,12 @@
   
   .category-group {
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    justify-content: center;
+    gap: 20px; /* Espacio entre los productos */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Los productos tienen un tamaño mínimo de 400px */
+    justify-content: center; /* Centra los productos */
+    width: 95%; /* Asegura que el contenedor ocupe todo el ancho disponible */
   }
+  
   
   
   input[type="text"] {
