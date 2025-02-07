@@ -7,13 +7,14 @@ import { ProductoCarrito } from './productoCarrito';
   providedIn: 'root',
 })
 export class CarritoService {
+  cantidadTotal$: any;
   constructor(private router: Router) {}
   
   private carrito: ProductoCarrito[] = [];
   private totalQuantitySubject = new BehaviorSubject<number>(0);
   totalQuantity$ = this.totalQuantitySubject.asObservable();
 
-  addToCart(producto: ProductoCarrito) {
+  anyadirCarrito(producto: ProductoCarrito) {
     const item = this.carrito.find(p => p.id === producto.id);
     if (item) {
       item.cantidad++;
@@ -23,7 +24,7 @@ export class CarritoService {
     this.actualizarCantidadTotal();
   }
 
-  updateQuantity(producto: ProductoCarrito, change: number) {
+  actualizarCantidad(producto: ProductoCarrito, change: number) {
     const item = this.carrito.find(p => p.id === producto.id);
     if (item) {
       item.cantidad += change;

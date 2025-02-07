@@ -1,86 +1,76 @@
-/* Contenedor principal de bienvenida */
 .bienvenida-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1ABC9C;
-    color: white;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden; /* Ocultar contenido fuera de la pantalla */
-  }
-  
-  /* Animación para la moto */
-  .moto {
-    position: absolute;
-    top: 50%;
-    left: -200px;  /* Empieza fuera de la pantalla */
-    transform: translateY(-50%); /* Centrado verticalmente */
-    font-size: 4rem; /* Tamaño del icono */
-    animation: moveMoto 3s ease-in-out forwards; /* La moto se mueve de izquierda a derecha */
-  }
-  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1ABC9C;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
 
-  /* Animación para los utensilios de cocina (que aparece estático sobre el h1) */
-  .utensilios {
-    position: absolute;
-    top: 30%;  /* Posiciona un poco más arriba que el título */
-    left: 50%;
-    transform: translateX(-50%); /* Centrado horizontalmente */
-    font-size: 3rem; /* Tamaño de los utensilios */
-    opacity: 0; /* Inicialmente oculto */
-    animation: fadeInUtensilios 2s ease-out 3s forwards; /* Los utensilios aparecerán después de la moto */
-  }
-  
-  /* Animación para la moto (de izquierda a derecha) */
-  @keyframes moveMoto {
-    0% {
+.moto {
+  position: absolute;
+  top: 50%;
+  left: -200px;
+  transform: translateY(-50%);
+  font-size: 4rem;
+  animation: moveMoto 3s ease-in-out forwards;
+}
+
+.utensilios {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  opacity: 0;
+  animation: fadeInUtensilios 2s ease-out 3s forwards;
+}
+
+@keyframes moveMoto {
+  0% {
       left: -200px;
-    }
-    100% {
-      left: 100%; /* Moto se mueve a la derecha hasta fuera de la pantalla */
-    }
   }
-  
-  /* Animación para los utensilios (aparecen después de la moto) */
-  @keyframes fadeInUtensilios {
-    0% {
+  100% {
+      left: 100%;
+  }
+}
+
+@keyframes fadeInUtensilios {
+  0% {
       opacity: 0;
-      transform: translateY(30px);  /* Desplazamiento desde abajo */
-    }
-    100% {
+      transform: translateY(30px);
+  }
+  100% {
       opacity: 1;
-      transform: translateY(0);  /* Los utensilios se posicionan sobre el h1 */
-    }
+      transform: translateY(0);
   }
-  
-  /* Estilo para el título que aparece después */
-  h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    opacity: 0; /* Inicialmente oculto */
-    animation: fadeInText 2s ease-out 3s forwards; /* El texto aparece después de la moto */
-  }
-  
-  /* Animación para el texto de bienvenida */
-  @keyframes fadeInText {
-    0% {
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  opacity: 0;
+  animation: fadeInText 2s ease-out 3s forwards;
+}
+
+@keyframes fadeInText {
+  0% {
       opacity: 0;
-      transform: translateY(30px);  /* Desplazamiento desde abajo */
-    }
-    100% {
+      transform: translateY(30px);
+  }
+  100% {
       opacity: 1;
-      transform: translateY(0);  /* El texto aparece en su lugar original */
-    }
+      transform: translateY(0);
   }
-  
-  /* Animación para el subtítulo (p) */
-  p {
-    font-size: 1.5rem;
-    color: #f7f7f7;
-    opacity: 0;  /* Inicialmente oculto */
-    animation: fadeInText 2s ease-out 3.5s forwards; /* Aparece después del título */
-  }
-  
+}
+
+p {
+  font-size: 1.5rem;
+  color: #f7f7f7;
+  opacity: 0;
+  animation: fadeInText 2s ease-out 3.5s forwards;
+}

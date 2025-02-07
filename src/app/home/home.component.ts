@@ -20,7 +20,7 @@ import { HeaderComponent } from '../titulo/titulo.component';
       <section>
         <form>
           <input type="text" placeholder="🔎Que buscas?" #filter />
-          <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+          <button class="primary" type="button" (click)="filtrarResultados(filter.value)">Search</button>
           <app-filtro (toggleDiscount)="toggleDiscount($event)"></app-filtro>
           <br>   
         </form>
@@ -80,7 +80,7 @@ export class HomeComponent{
     this.menus = this.listaFiltradaProductos.filter(p => p.category === 'menús');
   }
 
-  filterResults(text: string) {
+  filtrarResultados(text: string) {
     if (!text) {
       this.listaFiltradaProductos = this.listaProductos;
     } else {

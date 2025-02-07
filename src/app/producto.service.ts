@@ -168,7 +168,7 @@ export class ProductoService {
     this.listaProducto = this.listaProducto.filter(
       (pro) => pro !== proBorrar
     )
-    alert('Elimnado con éxito');
+    alert('Eliminado con éxito');
     this.router.navigate(['']);  
   }
 }

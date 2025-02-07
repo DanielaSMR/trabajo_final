@@ -9,8 +9,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
   animations: [
     trigger('fadeInUp', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(30px)' }), // Estado inicial
-        animate('1s ease-out', style({ opacity: 1, transform: 'translateY(0)' })) // Estado final
+        style({ opacity: 0, transform: 'translateY(30px)' }),
+        animate('1s ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
       ])
     ])
   ]
@@ -20,6 +20,6 @@ export class BienvenidaComponent {
   constructor(private router: Router) {}
 
   irAHome(): void {
-    this.router.navigate(['/home']); // Redirige a la página home
+    this.router.navigate(['/home']);
   }
 }

@@ -18,7 +18,7 @@ import { ProductoCarrito } from '../productoCarrito';
       </div>
       
       <div class="cart-icon">
-        <span class="cart-count">{{ totalQuantity }}</span>
+        <span class="cart-count">{{ cantidadTotal }}</span>
         <button class="new" (click)="toggleCarrito()">🛒Carrito</button>
       </div>
     </div>
@@ -59,7 +59,7 @@ import { ProductoCarrito } from '../productoCarrito';
 })
 
 export class HeaderComponent{
-  totalQuantity: number = 0;
+  cantidadTotal: number = 0;
   carritoAbierto: boolean = false; 
   productosCarrito: ProductoCarrito[] = [];
   totalPrice: number = 0;
@@ -67,8 +67,8 @@ export class HeaderComponent{
   constructor(private carritoService: CarritoService) {}
 
   ngOnInit(): void {
-    this.carritoService.totalQuantity$.subscribe((cantidad: number) => {
-      this.totalQuantity = cantidad;
+    this.carritoService.cantidadTotal$.subscribe((cantidad: number) => {
+      this.cantidadTotal = cantidad;
     });
   
     this.productosCarrito = this.carritoService.getCart();
@@ -85,8 +85,8 @@ export class HeaderComponent{
   }
   
 
-  updateQuantity(item: ProductoCarrito, change: number) {
-    this.carritoService.updateQuantity(item, change);
+  actualizarCantidad(item: ProductoCarrito, change: number) {
+    this.carritoService.actualizarCantidad(item, change);
     this.productosCarrito = this.carritoService.getCart(); 
     this.calculateTotal(); 
   }

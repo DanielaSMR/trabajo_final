@@ -43,10 +43,9 @@ export class ProductComponent {
 
   constructor(
     private cartService: CarritoService,
-    private productoService: ProductoService
   ) {}
 
-  addToCart() {
+  anyadirCarrito() {
     const productoCarrito: ProductoCarrito = {
       id: this.producto.id,
       name: this.producto.name,
@@ -55,7 +54,7 @@ export class ProductComponent {
       image: this.producto.imageUrl
     };
 
-    this.cartService.addToCart(productoCarrito); 
+    this.cartService.anyadirCarrito(productoCarrito); 
   }
 
 }
