@@ -13,7 +13,7 @@ import { ProductoCarrito } from '../productoCarrito';
     </div>
     <div class="content">
       <div class="info-box">
-        <h1 class="store-name">Burger King</h1>
+        <h1 class="store-name">Tu comida favorita</h1>
         <p class="store-info">Abierto de 9:00 - 23:00. Disfruta de la experiencia burger</p>
       </div>
       

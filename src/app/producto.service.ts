@@ -21,7 +21,7 @@ export class ProductoService {
       cantidad: 1
     },
     {
-      discount: 10,
+      discount: 0,
       id: 2,
       name: 'Menú Ragnarök',
       description: 'Doble hamburguesa con queso, papas y refresco',
@@ -31,7 +31,7 @@ export class ProductoService {
       cantidad: 1
     },
     {
-      discount: 10,
+      discount: 0,
       id: 3,
       name: 'Menú Asgard',
       description: 'Hamburguesa de pollo, aros de cebolla y bebida',
@@ -87,7 +87,7 @@ export class ProductoService {
     },
 
     {
-      discount: 10,
+      discount: 0,
       id: 2001,
       name: 'Asgard Fries',
       description: 'Papas fritas con queso fundido y jalapeños',
@@ -121,7 +121,7 @@ export class ProductoService {
     },
 
     {
-      discount: 5,
+      discount: 7,
       id: 3001,
       name: 'Valhalla Grofe',
       description: 'El postre mas goloso un delicioso gofre con sirope a elegir',
@@ -132,7 +132,7 @@ export class ProductoService {
 
     },
     {
-      discount: 7,
+      discount: 0,
       id: 3002,
       name: 'Bifröst Brownie',
       description: 'Brownie de chocolate con helado de vainilla',
@@ -143,7 +143,7 @@ export class ProductoService {
 
     },
     {
-      discount: 10,
+      discount: 0,
       id: 3003,
       name: 'Ragnarök Ice Cream',
       description: 'Helado de frutos del bosque con crumble de galleta',
@@ -159,4 +159,16 @@ export class ProductoService {
     return this.listaProducto;
   }
 
+  getProductLocationById(id: number): Producto | undefined {
+    return this.listaProducto.find((product) => product.id === id);
+  }
+
+  deleteApplication(id: number){
+    var proBorrar = this.getProductLocationById(id);
+    this.listaProducto = this.listaProducto.filter(
+      (pro) => pro !== proBorrar
+    )
+    alert('Elimnado con éxito');
+    this.router.navigate(['']);  
+  }
 }

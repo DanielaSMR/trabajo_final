@@ -114,5 +114,31 @@ button:hover{
 
 .container {
   display: flex;
-  align-items: center; /* Alinea los elementos verticalmente en el centro */
+  align-items: center;
+}
+
+.old-price{
+  color: red;
+  text-decoration: line-through;
+  margin-right: 5px;
+}
+
+.new-price{
+  font-size: 25px;
+}
+
+.listing-content {
+  position: relative;
+}
+
+.discount {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  background-color: rgb(247, 201, 53);
+  padding: 6px 15px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: smaller;
+  z-index: 2; 
 }

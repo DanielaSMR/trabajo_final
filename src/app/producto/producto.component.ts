@@ -21,8 +21,14 @@ import { ProductoService } from '../producto.service';
       <p class="listing-location">{{ producto.description }}</p>
       <div class="container">
         <p>Precio:</p>
-        <p [ngStyle]="{ 'color': producto.discount > 0 ? 'red' : 'black' }" class="listing-price">
+        <p [ngClass]="{ 'old-price': producto.discount > 0 }" class="listing-price">
           {{ producto.price }} $
+        </p>
+        <p [hidden]="producto.discount <= 0" class="new-price">
+          {{ (producto.price * (1 - producto.discount / 100)).toFixed(2) }} $
+        </p>
+        <p [hidden]="producto.discount <= 0" class="discount">
+          {{ producto.discount }} %
         </p>
       </div>
       <button (click)="addToCart()">+</button>
