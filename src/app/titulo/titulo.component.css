@@ -136,3 +136,10 @@ button:hover {
 }
   
   
+.boton-realizar{
+  background-color: rgb(190, 4, 4);
+}
+
+.boton-realizar:hover {
+  background-color: #a50202;
+}

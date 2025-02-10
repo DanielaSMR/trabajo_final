@@ -14,7 +14,7 @@ export class CarritoService {
   private totalQuantitySubject = new BehaviorSubject<number>(0);
   totalQuantity$ = this.totalQuantitySubject.asObservable();
 
-  anyadirCarrito(producto: ProductoCarrito) {
+  addToCart(producto: ProductoCarrito) {
     const item = this.carrito.find(p => p.id === producto.id);
     if (item) {
       item.cantidad++;

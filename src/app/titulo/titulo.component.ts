@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CarritoService } from '../carrito.service';
@@ -39,9 +39,9 @@ import { ProductoCarrito } from '../productoCarrito';
             <p>Cantidad: {{ item.cantidad }}</p>
 
             <div class="quantity-control">
-              <button (click)="updateQuantity(item, -1)">-</button>
+              <button (click)="actualizarCantidad(item, -1)">-</button>
               <span>{{ item.cantidad }}</span>
-              <button (click)="updateQuantity(item, 1)">+</button>
+              <button (click)="actualizarCantidad(item, 1)">+</button>
             </div>
           </div>
         </div>
@@ -52,13 +52,15 @@ import { ProductoCarrito } from '../productoCarrito';
 
         <button (click)="vaciarCarrito()">Vaciar Carrito</button>
         <button (click)="toggleCarrito()">Cerrar</button>
+        <button class="boton-realizar" (click)="realizarPedido()" *ngIf="productosCarrito.length > 0">Realizar Pedido</button>
+
       </div>
     </div>
   `,
   styleUrls: ['./titulo.component.css'], 
 })
 
-export class HeaderComponent{
+export class HeaderComponent implements OnInit {
   cantidadTotal: number = 0;
   carritoAbierto: boolean = false; 
   productosCarrito: ProductoCarrito[] = [];
@@ -67,25 +69,22 @@ export class HeaderComponent{
   constructor(private carritoService: CarritoService) {}
 
   ngOnInit(): void {
-    this.carritoService.cantidadTotal$.subscribe((cantidad: number) => {
+    this.carritoService.totalQuantity$?.subscribe((cantidad: number) => {
       this.cantidadTotal = cantidad;
+      this.productosCarrito = this.carritoService.getCart(); 
+      this.calculateTotal();
     });
-  
-    this.productosCarrito = this.carritoService.getCart();
-    this.calculateTotal();
   }
-  
 
   toggleCarrito(): void {
     this.carritoAbierto = !this.carritoAbierto;
-  
     if (this.carritoAbierto) {
+      this.productosCarrito = this.carritoService.getCart(); 
       this.calculateTotal(); 
     }
   }
-  
 
-  actualizarCantidad(item: ProductoCarrito, change: number) {
+  actualizarCantidad(item: ProductoCarrito, change: number): void {
     this.carritoService.actualizarCantidad(item, change);
     this.productosCarrito = this.carritoService.getCart(); 
     this.calculateTotal(); 
@@ -93,13 +92,22 @@ export class HeaderComponent{
 
   vaciarCarrito(): void {
     this.carritoService.vaciarCarrito(); 
-    this.productosCarrito = this.carritoService.getCart(); 
-    this.calculateTotal(); 
+    this.productosCarrito = []; 
+    this.cantidadTotal = 0;
+    this.totalPrice = 0;
     this.carritoAbierto = false;  
   }
-  
 
-  calculateTotal() {
+  calculateTotal(): void {
     this.totalPrice = this.carritoService.getTotalPrice();
   }
+
+  realizarPedido(): void {
+    alert("Pedido realizado, llegará en 20 min");
+    this.carritoService.vaciarCarrito();
+    this.productosCarrito = this.carritoService.getCart();
+    this.calculateTotal();
+    this.carritoAbierto = false;
+  }
+  
 }
